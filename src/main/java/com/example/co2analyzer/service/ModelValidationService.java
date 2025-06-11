@@ -17,7 +17,7 @@ public class ModelValidationService {
 
     // Allowed file extensions for ML models
     private static final List<String> ALLOWED_EXTENSIONS = Arrays.asList(
-            ".pkl", ".joblib", ".h5", ".pb", ".pt", ".pth", ".onnx", ".pmml", ".json", ".ipynb"
+            ".pkl", ".joblib", ".h5", ".pb", ".pt", ".pth", ".onnx", ".pmml", ".json", ".ipynb", ".py"
     );
     // Allowed MIME types
     private static final List<String> ALLOWED_MIME_TYPES = Arrays.asList(
