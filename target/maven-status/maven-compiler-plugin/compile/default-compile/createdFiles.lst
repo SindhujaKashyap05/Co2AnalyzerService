@@ -1,0 +1,11 @@
+com/example/co2analyzer/dto/ErrorResponse.class
+com/example/co2analyzer/Co2AnalyzerServiceApplication.class
+com/example/co2analyzer/dto/ModelUploaderRequest.class
+com/example/co2analyzer/service/ModelValidationService.class
+com/example/co2analyzer/controller/ModelUploadController.class
+com/example/co2analyzer/exception/ModelValidationException.class
+com/example/co2analyzer/service/S3UploadService.class
+com/example/co2analyzer/config/S3Properties.class
+com/example/co2analyzer/dto/ModelUploadResponse.class
+com/example/co2analyzer/config/AwsConfig.class
+com/example/co2analyzer/exception/S3UploadException.class
