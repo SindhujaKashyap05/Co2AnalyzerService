@@ -1,0 +1,12 @@
+# Ignore IntelliJ project files
+.idea/
+*.iml
+
+# Ignore build output
+/target/
+/build/
+/out/
+*.class
+
+# Ignore workspace files
+/workspace.xml
