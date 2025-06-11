@@ -38,6 +38,7 @@ public class ModelUploadController {
         this.s3UploadService = s3UploadService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @Operation(
             summary = "Upload ML model to S3",
@@ -68,20 +69,11 @@ public class ModelUploadController {
             @RequestParam("modelName") String modelName,
 
             @Parameter(description = "Model version", required = true)
-            @RequestParam("version") String version,
-
-            @Parameter(description = "Model description")
-            @RequestParam(value = "description", required = false) String description,
-
-            @Parameter(description = "Model framework")
-            @RequestParam(value = "framework", required = false) String framework,
-
-            @Parameter(description = "Model type")
-            @RequestParam(value = "modelType", required = false) String modelType) {
+            @RequestParam("version") String version){
 
         try {
             // Create request object
-            ModelUploaderRequest request = new ModelUploaderRequest(modelName, version, description, framework, modelType);
+            ModelUploaderRequest request = new ModelUploaderRequest(modelName, version);
 
             // Validate the model file
             validationService.validateModelFile(file);
