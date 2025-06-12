@@ -9,6 +9,7 @@ import java.util.Map;
 @RestController
 public class UIController {
 
+    //For displaying as is in UI
     @GetMapping("/api/analytics")
     public List<Map<String, Object>> getAnalytics() {
         return List.of(

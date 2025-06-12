@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -119,8 +120,9 @@ public class ModelUploadController {
         return ResponseEntity.ok("Model upload service is healthy");
     }
 
+    //For fetching the details as json from the table
     @GetMapping("/test")
-    public List<String> test(){
+    public List<Map<String, Object>> test(){
         return dynamoDbService.fetchAllItemsFromTable("SageMakerJobStatus");
     }
 }
