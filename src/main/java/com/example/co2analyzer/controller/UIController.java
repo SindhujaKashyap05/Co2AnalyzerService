@@ -1,5 +1,8 @@
 package com.example.co2analyzer.controller;
 
+import com.example.co2analyzer.Model.SageMakerResponse;
+import com.example.co2analyzer.service.FetchDetailsService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -8,6 +11,12 @@ import java.util.Map;
 
 @RestController
 public class UIController {
+
+    private final FetchDetailsService fetchDetailsService;
+
+    public UIController(FetchDetailsService fetchDetailsService) {
+        this.fetchDetailsService = fetchDetailsService;
+    }
 
     //For displaying as is in UI
     @GetMapping("/api/analytics")
@@ -18,6 +27,11 @@ public class UIController {
                 Map.of("id", 3, "name", "ResNet-50", "type", "Vision", "co2", 78.3, "status", "analyzed", "lastRun", "2024-11-29"),
                 Map.of("id", 4, "name", "YOLO-v8", "type", "Detection", "co2", 156.9, "status", "optimized", "lastRun", "2024-12-01")
         );
+    }
+
+    @GetMapping("/fetch")
+    public ResponseEntity<List<SageMakerResponse>> getAllJobDetails() {
+        return ResponseEntity.ok(fetchDetailsService.getAllJobDetails());
     }
 
 }
