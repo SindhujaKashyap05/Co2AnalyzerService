@@ -5,6 +5,7 @@ import com.example.co2analyzer.dto.ModelUploaderRequest;
 import com.example.co2analyzer.dto.ModelUploadResponse;
 import com.example.co2analyzer.exception.ModelValidationException;
 import com.example.co2analyzer.exception.S3UploadException;
+import com.example.co2analyzer.service.DynamoDbService;
 import com.example.co2analyzer.service.ModelValidationService;
 import com.example.co2analyzer.service.S3UploadService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,6 +23,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -32,10 +34,13 @@ public class ModelUploadController {
     private final ModelValidationService validationService;
     private final S3UploadService s3UploadService;
 
+    private final DynamoDbService dynamoDbService;
+
     @Autowired
-    public ModelUploadController(ModelValidationService validationService, S3UploadService s3UploadService) {
+    public ModelUploadController(ModelValidationService validationService, S3UploadService s3UploadService, DynamoDbService dynamoDbService) {
         this.validationService = validationService;
         this.s3UploadService = s3UploadService;
+        this.dynamoDbService = dynamoDbService;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
@@ -112,5 +117,10 @@ public class ModelUploadController {
     @ApiResponse(responseCode = "200", description = "Service is healthy")
     public ResponseEntity<String> healthCheck() {
         return ResponseEntity.ok("Model upload service is healthy");
+    }
+
+    @GetMapping("/test")
+    public List<String> test(){
+        return dynamoDbService.fetchAllItemsFromTable("SageMakerJobStatus");
     }
 }
