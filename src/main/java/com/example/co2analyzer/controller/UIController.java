@@ -3,6 +3,7 @@ package com.example.co2analyzer.controller;
 import com.example.co2analyzer.Model.SageMakerResponse;
 import com.example.co2analyzer.service.FetchDetailsService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -29,7 +30,8 @@ public class UIController {
         );
     }
 
-    @GetMapping("/fetch")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("api/v1/fetch")
     public ResponseEntity<List<SageMakerResponse>> getAllJobDetails() {
         return ResponseEntity.ok(fetchDetailsService.getAllJobDetails());
     }
