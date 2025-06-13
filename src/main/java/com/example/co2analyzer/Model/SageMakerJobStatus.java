@@ -11,6 +11,7 @@ public class SageMakerJobStatus {
     private String jobArn;
     private String jobStatus;
     private String lastModifiedTime;
+    private String modelFile;
 
     @DynamoDbPartitionKey
     @DynamoDbAttribute("JobName")
@@ -66,4 +67,14 @@ public class SageMakerJobStatus {
     public void setLastModifiedTime(String lastModifiedTime) {
         this.lastModifiedTime = lastModifiedTime;
     }
+
+    @DynamoDbAttribute("ModelFile")
+    public String getModelFile() {
+        return modelFile;
+    }
+
+    public void setModelFile(String modelFile) {
+        this.modelFile= modelFile;
+    }
+
 }

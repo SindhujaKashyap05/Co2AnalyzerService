@@ -37,6 +37,7 @@ public class FetchDetailsService {
                 res.setDynamicEmission(metric.getDynamicEmission());
                 res.setCreationTime(status.getCreationTime());
                 res.setJobStatus(status.getJobStatus());
+                res.setModelFile(status.getModelFile());
                 responses.add(res);
             }
         }

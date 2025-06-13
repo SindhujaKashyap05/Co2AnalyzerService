@@ -7,6 +7,7 @@ public class SageMakerResponse {
     private Double dynamicEmission;
     private String creationTime;
     private String jobStatus;
+    private String modelFile;
 
     public String getJobName() {
         return jobName;
@@ -54,5 +55,13 @@ public class SageMakerResponse {
 
     public void setJobStatus(String jobStatus) {
         this.jobStatus = jobStatus;
+    }
+
+    public String getModelFile(){
+        return modelFile;
+    }
+
+    public void setModelFile(String modelFile){
+        this.modelFile = modelFile;
     }
 }
